@@ -3,7 +3,7 @@
 Working checklist to take the static starter to production. Items are grouped by area. Check items off as they ship.
 
 ## Content & assets
-- [ ] Replace placeholder images with owned/local photos
+- [ ] Replace **TEMPORARY remote Unsplash placeholder photos** (currently hardcoded in `index.html` as a stop-gap to fix broken images on the live site) with owned/local/creator-shot photography before final production. Only the logo (`assets/images/logo-foodinmycity-dark.png`) is a real local asset. See `docs/PHOTO_LICENSES.md` for the full list of temporary URLs.
 - [ ] Add real logo asset (final `logo-foodinmycity-dark.png`)
 - [ ] Add favicons and social share (Open Graph) image
 - [ ] Add restaurant data JSON
