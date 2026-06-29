@@ -32,13 +32,15 @@ html{scroll-behavior:smooth}
 body{background:var(--espresso);color:var(--alabaster);font-family:'DM Sans',sans-serif;overflow-x:hidden;line-height:1.6;cursor:default}
 
 /* ── NAV ── */
-#nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .5s}
-#nav.solid{background:rgba(12,10,9,.95);backdrop-filter:blur(24px);padding:18px 52px;border-bottom:1px solid var(--whisper)}
+#nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:18px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .5s}
+#nav.solid{background:rgba(12,10,9,.95);backdrop-filter:blur(24px);padding:12px 52px;border-bottom:1px solid var(--whisper)}
 .nav-brand{display:flex;align-items:center}
-.nav-logo{height:40px;width:auto;display:block;object-fit:contain}
+.nav-logo{height:74px;width:auto;display:block;object-fit:contain}
 .nav-links{display:flex;gap:36px}
-.nav-links a{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);text-decoration:none;transition:color .2s}
-.nav-links a:hover{color:var(--alabaster)}
+.nav-links a{position:relative;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--alabaster);text-decoration:none;padding-bottom:5px;transition:color .2s ease}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a.active{color:var(--pimiento)}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold);border-radius:2px}
 .nav-right{display:flex;align-items:center;gap:20px}
 .nav-loc{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:7px}
 .nav-loc-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold-glow);animation:glow 2s infinite}
@@ -307,10 +309,11 @@ body{background:var(--espresso);color:var(--alabaster);font-family:'DM Sans',san
 .cta-b.g{background:none;color:var(--smoke)}
 .cta-b.g:hover{color:var(--alabaster);border-color:var(--whisper-strong)}
 
-footer{background:#050403;padding:30px 52px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--whisper)}
+footer{background:#050403;padding:36px 52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;border-top:1px solid var(--whisper)}
+.f-logo{height:60px;width:auto;display:block;margin:0 auto;object-fit:contain}
 .f-brand{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:rgba(245,242,235,.22)}
 .f-brand span{color:var(--pimiento)}
-.f-note{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,242,235,.14)}
+.f-note{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,242,235,.14);text-align:center}
 
 /* ════ SCROLL REVEAL ════ */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
@@ -318,7 +321,10 @@ footer{background:#050403;padding:30px 52px;display:flex;align-items:center;just
 
 /* ════ RESPONSIVE ════ */
 @media(max-width:960px){
-  #nav{padding:20px 24px}
+  #nav{padding:16px 24px}
+  .nav-logo{height:54px}
+  .f-logo{height:50px}
+  footer{padding:30px 24px}
   .nav-links{display:none}
   #act-decision,#act-daily,#act-cravings,#act-local,#act-dna,#act-passport,#act-memory,#act-morning,#act-cta,#act-faq{padding:72px 24px}
   .de-top,.tonight-full,.editor-cinema,.dna-inner,.local-inner{grid-template-columns:1fr}
