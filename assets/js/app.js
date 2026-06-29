@@ -238,6 +238,12 @@ document.addEventListener("DOMContentLoaded", function () {
         case "build-food-dna":
           getFoodDnaProfile();
           break;
+        case "talk-to-sebastian":
+          openSebastian("welcome");
+          break;
+        case "surprise-me":
+          surpriseSebastian();
+          break;
         default:
           break;
       }
@@ -266,6 +272,24 @@ document.addEventListener("DOMContentLoaded", function () {
     var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
     window.scrollTo({ top: top, behavior: "smooth" });
   }
+
+  // Sebastian — the host. He greets, then guides you to your one confident pick.
+  // (Conversation UI is a future enhancement; for now he walks you to the decision.)
+  function openSebastian(pose){
+    trackEvent("sebastian_open", { pose: pose || "welcome" });
+    sendLoopEvent("sebastian_open", { pose: pose || "welcome" });
+    getTonightRecommendation(collectNightContext());
+    scrollToDecision();
+  }
+
+  // "Surprise me" — let Sebastian decide for you.
+  function surpriseSebastian(){
+    trackEvent("sebastian_surprise", { mode: "surprise" });
+    sendLoopEvent("sebastian_surprise", { mode: "surprise" });
+    getTonightRecommendation(collectNightContext());
+    scrollToDecision();
+  }
+
 
   /* Mobile menu: open/close, scroll lock, Escape, link-close, accessibility */
   (function(){
