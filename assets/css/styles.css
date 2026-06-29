@@ -379,3 +379,74 @@ body.menu-open{overflow:hidden}
   #nav{padding:12px 16px}
   .mm-links a{font-size:26px}
 }
+
+
+/* ===================== MEET SEBASTIAN — AI Maitre D' ===================== */
+#act-sebastian{position:relative;background:var(--espresso);padding:130px 52px 0;overflow:hidden}
+/* warm hospitality lighting wash behind the host */
+.seb-warmth{position:absolute;top:-10%;right:-5%;width:70%;height:120%;pointer-events:none;
+  background:radial-gradient(60% 55% at 70% 38%, var(--gold-glow) 0%, rgba(217,119,6,0.06) 38%, transparent 72%);
+  filter:blur(8px);z-index:0}
+.seb-inner{position:relative;z-index:1;max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:55% 45%;align-items:end;gap:0;min-height:560px}
+/* LEFT — the welcome copy */
+.seb-copy{position:relative;z-index:3;padding:0 8px 130px 0;max-width:600px}
+.seb-eyebrow{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.seb-h{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(44px,5vw,68px);
+  line-height:1.02;color:var(--alabaster);margin-bottom:10px}
+.seb-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+  font-size:clamp(22px,2.4vw,30px);color:var(--gold-light);margin-bottom:34px;letter-spacing:.01em}
+.seb-body p{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;line-height:1.62;
+  color:var(--alabaster-dim);margin-bottom:16px;max-width:480px}
+.seb-body em{font-style:italic;color:var(--alabaster)}
+.seb-body-close{color:var(--alabaster)!important;font-weight:600;margin-top:6px}
+.seb-cta-row{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap}
+.seb-cta-primary{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:#fff;background:var(--pimiento);border:none;border-radius:4px;
+  padding:16px 30px;cursor:pointer;transition:background .2s ease,box-shadow .2s ease,transform .2s ease}
+.seb-cta-primary:hover{background:var(--pimiento-deep);box-shadow:0 14px 38px var(--pimiento-glow);transform:translateY(-1px)}
+.seb-cta-secondary{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--alabaster);background:none;border:1px solid var(--whisper-strong);
+  border-radius:4px;padding:16px 30px;cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease}
+.seb-cta-secondary:hover{border-color:var(--gold);color:var(--gold)}
+/* RIGHT — Sebastian standing in the room (no card, feet bleed below) */
+.seb-stage{position:relative;z-index:2;align-self:end;justify-self:center;
+  height:100%;display:flex;align-items:flex-end;justify-content:center;cursor:pointer;
+  margin-left:-9%;margin-bottom:-2px}
+.seb-portrait{display:block;width:auto;max-width:none;height:660px;max-height:84vh;
+  object-fit:contain;object-position:bottom center;
+  filter:drop-shadow(0 40px 60px rgba(0,0,0,.55));
+  transition:filter .35s ease,transform .6s ease;will-change:transform}
+.seb-stage:hover .seb-portrait{filter:drop-shadow(0 44px 66px rgba(0,0,0,.6)) brightness(1.04) saturate(1.04);transform:translateY(-4px)}
+.seb-stage:focus-visible{outline:2px solid var(--gold);outline-offset:8px;border-radius:8px}
+/* soft tablet glow that warms on hover */
+.seb-tablet-glow{position:absolute;left:46%;top:52%;width:130px;height:90px;border-radius:50%;
+  background:radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+  opacity:0;transition:opacity .4s ease;pointer-events:none;filter:blur(6px)}
+.seb-stage:hover .seb-tablet-glow{opacity:1}
+/* graceful entrance — fade in + 20px rise, ease-out, no bounce (reuses .reveal) */
+.seb-stage.reveal{transform:translateY(28px)}
+.seb-stage.reveal.in{transition:opacity .8s ease-out,transform .8s ease-out;transform:translateY(0)}
+.seb-copy.reveal.in{transition:opacity .7s ease-out,transform .7s ease-out}
+
+@media(max-width:960px){
+  #act-sebastian{padding:90px 32px 0}
+  .seb-inner{grid-template-columns:1fr;gap:24px;min-height:0;align-items:center;text-align:center}
+  .seb-copy{padding:0;max-width:560px;margin:0 auto}
+  .seb-body p{margin-left:auto;margin-right:auto}
+  .seb-cta-row{justify-content:center}
+  .seb-stage{margin-left:0;justify-self:center}
+  .seb-portrait{height:auto;width:auto;max-width:78vw;max-height:520px}
+  .seb-tablet-glow{left:42%}
+}
+@media(max-width:480px){
+  #act-sebastian{padding:72px 22px 0}
+  .seb-portrait{max-width:90vw;max-height:440px}
+  .seb-cta-row{flex-direction:column}
+  .seb-cta-primary,.seb-cta-secondary{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .seb-stage.reveal,.seb-copy.reveal{transform:none!important}
+  .seb-portrait{transition:none}
+}
