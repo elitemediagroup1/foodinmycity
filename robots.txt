@@ -1,0 +1,8 @@
+# robots.txt for FoodInMyCity
+# Allow all crawlers full access to the public site.
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://foodinmycity.com/sitemap.xml
