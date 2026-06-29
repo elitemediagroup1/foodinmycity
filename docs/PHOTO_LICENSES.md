@@ -39,3 +39,34 @@ The v6 prototype used royalty-free placeholder photography from Unsplash to conv
 - Prefer, in order: owned photography, restaurant-submitted photos, creator-shot local photography.
 - Keep alt text descriptive and specific (dish + restaurant) for accessibility and SEO.
 - The logo (`logo-foodinmycity-dark.png`) is an owned brand asset and is not a placeholder.
+
+## TEMPORARY remote photo URLs currently live in `index.html`
+
+> **These are temporary placeholders.** The local image files did not exist, which broke the live site. As an interim fix, the `<img src>` values in `index.html` now point to remote Unsplash URLs so the page renders. **They must be replaced with owned / local / creator-shot photography before final production.** Only `assets/images/logo-foodinmycity-dark.png` is a real, locally hosted asset.
+
+| Intended local path (to restore) | Temporary remote URL now in use |
+|----------------------------------|----------------------------------|
+| `assets/images/hero-steak.jpg` | https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/foundry-brisket.jpg` | https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/barnacle-lobster.jpg` | https://images.unsplash.com/photo-1625943553852-781c6dd46faa?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/miso-ramen.jpg` | https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/salvos-rigatoni.jpg` | https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/salvos-vodka-pizza.jpg` | https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/salt-press-burger.jpg` | https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/salvos-cacio.jpg` | https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/lemon-ricotta-pancakes.jpg` | https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/brown-butter-gelato.jpg` | https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/birria-tacos.jpg` | https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/daily-table/pecan-ribs.jpg` | https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/cravings/cheesy.jpg` | https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/cravings/smoky.jpg` | https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/cravings/sweet.jpg` | https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/cravings/crispy.jpg` | https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/cravings/fresh.jpg` | https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/cravings/messy.jpg` | https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/local-scene.jpg` | https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/editors/salt-press-burger.jpg` | https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/your-taste-spread.jpg` | https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80 |
+| `assets/images/morning-pastries.jpg` | https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80 |
+
+*Logo (kept local, not a placeholder):* `assets/images/logo-foodinmycity-dark.png`
