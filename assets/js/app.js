@@ -230,6 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "find-dinner-tonight":
         case "find-dinner-nav":
           getTonightRecommendation(collectNightContext());
+          scrollToDecision();
           break;
         case "take-me-there":
           openDirections(this.dataset.restaurant || "");
@@ -255,6 +256,65 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(() => { cityEl.textContent = cities[ci]; cityEl.style.opacity = "1"; }, 350);
     }, 4000);
   }
+
+  /* Smooth-scroll to the Tonight decision section */
+  function scrollToDecision(){
+    var target = document.getElementById("act-decision") || document.getElementById("act-tonight");
+    if(!target) return;
+    var navEl = document.getElementById("nav");
+    var offset = navEl ? navEl.getBoundingClientRect().height : 0;
+    var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: "smooth" });
+  }
+
+  /* Mobile menu: open/close, scroll lock, Escape, link-close, accessibility */
+  (function(){
+    var burger = document.getElementById("navBurger");
+    var menu = document.getElementById("mobileMenu");
+    var closeBtn = document.getElementById("mmClose");
+    if(!burger || !menu) return;
+    var links = menu.querySelectorAll(".mm-links a");
+    function openMenu(){
+      menu.classList.add("open");
+      menu.setAttribute("aria-hidden","false");
+      burger.setAttribute("aria-expanded","true");
+      document.body.classList.add("menu-open");
+      var first = menu.querySelector("a, button");
+      if(first) first.focus();
+    }
+    function closeMenu(){
+      menu.classList.remove("open");
+      menu.setAttribute("aria-hidden","true");
+      burger.setAttribute("aria-expanded","false");
+      document.body.classList.remove("menu-open");
+      burger.focus();
+    }
+    burger.addEventListener("click", function(){
+      if(menu.classList.contains("open")) closeMenu(); else openMenu();
+    });
+    if(closeBtn) closeBtn.addEventListener("click", closeMenu);
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape" && menu.classList.contains("open")) closeMenu();
+    });
+    links.forEach(function(a){
+      a.addEventListener("click", function(){
+        var id = (a.getAttribute("href")||"").replace("#","");
+        closeMenu();
+        if(id){
+          var sec = document.getElementById(id);
+          if(sec){
+            setTimeout(function(){
+              var navEl = document.getElementById("nav");
+              var offset = navEl ? navEl.getBoundingClientRect().height : 0;
+              var top = sec.getBoundingClientRect().top + window.pageYOffset - offset;
+              window.scrollTo({ top: top, behavior: "smooth" });
+            }, 80);
+          }
+        }
+      });
+    });
+  })();
+
 });
 
 /* --- Helper: gather the current "night" context for the engine --- */
