@@ -157,6 +157,7 @@
     <a href="#act-cravings">Cravings</a>
     <a href="#act-editor">Tastemakers</a>
     <a href="#act-passport">Passport</a>
+        <a href="#" data-cta="open-palate" data-palate-entry>My Palate</a>
   </div>
   <div class="nav-right">
     <div class="nav-loc"><div class="nav-loc-dot"></div><span id="cityLabel">Long Beach Island</span></div>
@@ -188,7 +189,7 @@
   <div class="open-top"></div>
   <div class="open-content">
     <p class="open-logo">FoodInMyCity</p>
-    <p class="open-greeting">Good evening.</p>
+    <p class="open-greeting" id="heroGreeting">Welcome. I’m Sebastian.</p>
     <h1 class="open-h1">Hungry?</h1>
   </div>
   <div class="open-scroll">
@@ -214,6 +215,7 @@
           <div class="seb-cta-row">
             <button class="seb-cta-primary" data-cta="talk-to-sebastian">Talk to Sebastian</button>
             <button class="seb-cta-secondary" data-cta="surprise-me">Surprise Me</button>
+            <button class="seb-cta-ghost" data-cta="start-my-palate">Start My Palate</button>
           </div>
         </div>
         <div class="seb-stage reveal" data-cta="talk-to-sebastian" data-sebastian="welcome" role="button" tabindex="0" aria-label="Talk to Sebastian, your AI maitre d">
@@ -527,7 +529,7 @@
   <p class="cta-sub">Confident dinner decisions in under 30 seconds. Your city's food scene, built entirely around you and what you want right now.</p>
   <div class="cta-row">
     <button class="cta-b p" data-cta="find-dinner-tonight">Find Dinner Tonight</button>
-    <button class="cta-b g" data-cta="build-food-dna">Build My Food DNA</button>
+    <button class="cta-b g" data-cta="build-my-palate">Build My Palate</button>
     <button class="cta-b g" data-cta="start-passport">Start My Passport</button>
   </div>
 </section>
@@ -539,6 +541,27 @@
     <h2 class="act-h2">Questions, answered.</h2>
   </div>
   <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary class="faq-q">What is My Palate?</summary>
+          <p class="faq-a">My Palate is Sebastian’s memory of how you like to dine &mdash; your favorite flavors, the kind of evening you’re usually planning, who joins you, and the places you’d never want suggested. The more he knows, the more confident his one pick becomes.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Do I need an account to use FoodInMyCity?</summary>
+          <p class="faq-a">No. You can let Sebastian help you decide right away. My Palate is optional &mdash; it just takes a name and email to start, and then every recommendation gets a little more personal.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How does Sebastian learn what I like?</summary>
+          <p class="faq-a">As you choose, save, and tell him about your evenings, Sebastian quietly remembers the patterns &mdash; the textures you keep picking, the towns you return to, the tables you reserve for something special. Nothing is required up front.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Is My Palate a food diary?</summary>
+          <p class="faq-a">Not at all. It isn’t a log to keep up with or account settings to manage. It’s simply what helps Sebastian take better care of you, so you spend less time deciding and more time enjoying dinner.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How does FoodInMyCity use AI?</summary>
+          <p class="faq-a">Sebastian uses smart technology behind the scenes to turn what you like into one confident recommendation. The experience stays warm and human &mdash; you get a trusted suggestion, not a search results page.</p>
+        </details>
+
     <details class="faq-item">
       <summary class="faq-q">What should I eat near me tonight?</summary>
       <p class="faq-a">Tell us what kind of night you are having &mdash; date night, family night, quick bite, comfort food &mdash; and you get one confident local pick plus exactly what to order. No endless scrolling through listings or reviews.</p>
@@ -569,5 +592,168 @@
 
 <!-- App logic & integration placeholders -->
 <script src="assets/js/app.js"></script>
+  <script src="assets/js/palate.js"></script>
+
+  <!-- ===================== MY PALATE — Signup Modal ===================== -->
+  <div class="palate-overlay" id="palateSignup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="palateSignupTitle">
+    <div class="palate-card palate-card-sm" role="document">
+      <button class="palate-x" data-palate-close aria-label="Close">&times;</button>
+      <p class="palate-eyebrow">My Palate</p>
+      <h2 class="palate-title" id="palateSignupTitle">Let’s begin your Palate.</h2>
+      <p class="palate-lede">The better Sebastian understands your palate, the better every recommendation becomes. Start with just your name &mdash; we’ll learn the rest together.</p>
+      <form id="palateSignupForm" novalidate>
+        <label class="palate-label" for="palateName">Name</label>
+        <input class="palate-input" id="palateName" name="name" type="text" autocomplete="name" placeholder="What should Sebastian call you?" />
+        <label class="palate-label" for="palateEmail">Email</label>
+        <input class="palate-input" id="palateEmail" name="email" type="email" autocomplete="email" placeholder="you@email.com" />
+        <p class="palate-err" id="palateSignupErr" style="display:none"></p>
+        <button class="palate-btn-primary" id="palateCreateBtn" type="submit">Create My Palate</button>
+      </form>
+      <p class="palate-fineprint">No preferences required up front. Sebastian asks for the rest once you’re inside.</p>
+    </div>
+  </div>
+
+  <!-- ===================== MY PALATE — Profile ===================== -->
+  <div class="palate-overlay" id="palateProfile" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="palateProfileTitle">
+    <div class="palate-card palate-card-lg" role="document">
+      <button class="palate-x" data-palate-close aria-label="Close">&times;</button>
+      <header class="palate-head">
+        <p class="palate-eyebrow">My Palate</p>
+        <h2 class="palate-title" id="palateProfileTitle"><span id="palateHello">Your Palate</span></h2>
+        <p class="palate-lede">Sebastian’s memory of how you like to dine. Update anything, anytime &mdash; it sharpens every recommendation.</p>
+      </header>
+
+      <section class="palate-learned-wrap">
+        <p class="palate-section-kicker">What Sebastian Has Learned</p>
+        <p class="palate-learned" id="palateLearned">I’m just getting to know your palate.</p>
+      </section>
+
+      <section class="palate-section">
+        <h3 class="palate-h3">Your Dining Style</h3>
+        <div class="palate-chips" data-palate-group="diningStyle">
+          <button type="button" class="palate-chip" data-value="Casual" aria-pressed="false">Casual</button>
+          <button type="button" class="palate-chip" data-value="Fine Dining" aria-pressed="false">Fine Dining</button>
+          <button type="button" class="palate-chip" data-value="Hidden Gems" aria-pressed="false">Hidden Gems</button>
+          <button type="button" class="palate-chip" data-value="Waterfront" aria-pressed="false">Waterfront</button>
+          <button type="button" class="palate-chip" data-value="Family Favorites" aria-pressed="false">Family Favorites</button>
+          <button type="button" class="palate-chip" data-value="Romantic" aria-pressed="false">Romantic</button>
+          <button type="button" class="palate-chip" data-value="Chef’s Table" aria-pressed="false">Chef’s Table</button>
+          <button type="button" class="palate-chip" data-value="Local Legends" aria-pressed="false">Local Legends</button>
+        </div>
+      </section>
+
+      <section class="palate-section">
+        <h3 class="palate-h3">Favorite Flavors</h3>
+        <div class="palate-chips" data-palate-group="favoriteFlavors">
+          <button type="button" class="palate-chip" data-value="Smoky" aria-pressed="false">Smoky</button>
+          <button type="button" class="palate-chip" data-value="Creamy" aria-pressed="false">Creamy</button>
+          <button type="button" class="palate-chip" data-value="Crispy" aria-pressed="false">Crispy</button>
+          <button type="button" class="palate-chip" data-value="Fresh" aria-pressed="false">Fresh</button>
+          <button type="button" class="palate-chip" data-value="Rich" aria-pressed="false">Rich</button>
+          <button type="button" class="palate-chip" data-value="Sweet" aria-pressed="false">Sweet</button>
+          <button type="button" class="palate-chip" data-value="Spicy" aria-pressed="false">Spicy</button>
+          <button type="button" class="palate-chip" data-value="Citrusy" aria-pressed="false">Citrusy</button>
+          <button type="button" class="palate-chip" data-value="Umami" aria-pressed="false">Umami</button>
+        </div>
+      </section>
+
+      <section class="palate-section">
+        <h3 class="palate-h3">Never Recommend</h3>
+        <div class="palate-grid2">
+          <label class="palate-field"><span>Foods to avoid</span><input class="palate-input" type="text" data-palate-field="neverRecommend.foods" /></label>
+          <label class="palate-field"><span>Restaurants to avoid</span><input class="palate-input" type="text" data-palate-field="neverRecommend.restaurants" /></label>
+          <label class="palate-field"><span>Allergies</span><input class="palate-input" type="text" data-palate-field="neverRecommend.allergies" /></label>
+          <label class="palate-field"><span>Dietary restrictions</span><input class="palate-input" type="text" data-palate-field="neverRecommend.dietaryRestrictions" /></label>
+          <label class="palate-field"><span>Chains to avoid</span><input class="palate-input" type="text" data-palate-field="neverRecommend.chains" /></label>
+        </div>
+      </section>
+
+      <section class="palate-section">
+        <h3 class="palate-h3">Your Table</h3>
+        <div class="palate-chips" data-palate-group="table">
+          <button type="button" class="palate-chip" data-value="Just me" aria-pressed="false">Just me</button>
+          <button type="button" class="palate-chip" data-value="Partner" aria-pressed="false">Partner</button>
+          <button type="button" class="palate-chip" data-value="Kids" aria-pressed="false">Kids</button>
+          <button type="button" class="palate-chip" data-value="Friends" aria-pressed="false">Friends</button>
+          <button type="button" class="palate-chip" data-value="Business" aria-pressed="false">Business</button>
+          <button type="button" class="palate-chip" data-value="Dog-friendly outings" aria-pressed="false">Dog-friendly outings</button>
+        </div>
+      </section>
+
+      <section class="palate-section">
+        <h3 class="palate-h3">Special Evenings</h3>
+        <div class="palate-chips" data-palate-group="specialEvenings">
+          <button type="button" class="palate-chip" data-value="Birthday" aria-pressed="false">Birthday</button>
+          <button type="button" class="palate-chip" data-value="Anniversary" aria-pressed="false">Anniversary</button>
+          <button type="button" class="palate-chip" data-value="Weekly date night" aria-pressed="false">Weekly date night</button>
+          <button type="button" class="palate-chip" data-value="Friday pizza" aria-pressed="false">Friday pizza</button>
+          <button type="button" class="palate-chip" data-value="Sunday brunch" aria-pressed="false">Sunday brunch</button>
+          <button type="button" class="palate-chip" data-value="Family dinner night" aria-pressed="false">Family dinner night</button>
+        </div>
+      </section>
+
+      <section class="palate-section">
+        <h3 class="palate-h3">Local Preferences</h3>
+        <div class="palate-grid2">
+          <label class="palate-field"><span>Home market</span><input class="palate-input" type="text" data-palate-field="localPreferences.homeMarket" /></label>
+          <label class="palate-field"><span>Favorite towns</span><input class="palate-input" type="text" data-palate-field="localPreferences.favoriteTowns" /></label>
+          <label class="palate-field"><span>How far will you drive? (minutes)</span><input class="palate-input" type="number" data-palate-field="localPreferences.driveDistanceMinutes" /></label>
+        </div>
+        <div class="palate-checks">
+          <label class="palate-check"><input type="checkbox" data-palate-field="localPreferences.walkable" /> <span>Prefer walkable places?</span></label>
+          <label class="palate-check"><input type="checkbox" data-palate-field="localPreferences.waterfront" /> <span>Prefer waterfront?</span></label>
+          <label class="palate-check"><input type="checkbox" data-palate-field="localPreferences.parking" /> <span>Prefer parking available?</span></label>
+        </div>
+      </section>
+
+      <section class="palate-section">
+        <h3 class="palate-h3">Spending Style</h3>
+        <div class="palate-grid2">
+          <label class="palate-field"><span>Weeknight budget</span><input class="palate-input" type="text" data-palate-field="spendingStyle.weeknight" /></label>
+          <label class="palate-field"><span>Weekend budget</span><input class="palate-input" type="text" data-palate-field="spendingStyle.weekend" /></label>
+          <label class="palate-field"><span>Celebration budget</span><input class="palate-input" type="text" data-palate-field="spendingStyle.celebration" /></label>
+          <label class="palate-field"><span>Lunch budget</span><input class="palate-input" type="text" data-palate-field="spendingStyle.lunch" /></label>
+        </div>
+      </section>
+
+      <section class="palate-section">
+        <h3 class="palate-h3">Drinks</h3>
+        <div class="palate-chips" data-palate-group="drinks">
+          <button type="button" class="palate-chip" data-value="Coffee" aria-pressed="false">Coffee</button>
+          <button type="button" class="palate-chip" data-value="Wine" aria-pressed="false">Wine</button>
+          <button type="button" class="palate-chip" data-value="Craft beer" aria-pressed="false">Craft beer</button>
+          <button type="button" class="palate-chip" data-value="Cocktails" aria-pressed="false">Cocktails</button>
+          <button type="button" class="palate-chip" data-value="Mocktails" aria-pressed="false">Mocktails</button>
+          <button type="button" class="palate-chip" data-value="None" aria-pressed="false">None</button>
+        </div>
+      </section>
+
+      <section class="palate-section">
+        <h3 class="palate-h3">Bucket List</h3>
+        <textarea class="palate-input palate-textarea" data-palate-field="bucketList" placeholder="Places or dishes you want to try…"></textarea>
+      </section>
+
+      <section class="palate-section">
+        <h3 class="palate-h3">Saved for Later</h3>
+        <div id="palateSaved"><p class="palate-empty">Nothing saved yet.</p></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ===================== SEBASTIAN — Panel ===================== -->
+  <div class="palate-overlay" id="sebastianPanel" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="sebPanelTitle">
+    <div class="palate-card seb-panel-card" role="document">
+      <button class="palate-x" data-palate-close aria-label="Close">&times;</button>
+      <p class="palate-eyebrow">Your AI Maitre D’</p>
+      <h2 class="palate-title" id="sebPanelTitle">Sebastian</h2>
+      <div class="seb-log" id="sebLog" aria-live="polite"></div>
+      <div class="seb-ask-row">
+        <input class="palate-input" id="sebInput" type="text" placeholder="Tell me about tonight… or say “Surprise me.”" />
+        <button class="palate-btn-primary seb-send" id="sebSend">Ask</button>
+      </div>
+      <button class="palate-btn-ghost" id="sebSavePick">Save this to My Palate</button>
+    </div>
+  </div>
+
 </body>
 </html>
