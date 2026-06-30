@@ -450,3 +450,105 @@ body.menu-open{overflow:hidden}
   .seb-stage.reveal,.seb-copy.reveal{transform:none!important}
   .seb-portrait{transition:none}
 }
+
+
+/* ===================== MY PALATE — Modals, Profile, Sebastian Panel ===================== */
+.palate-lock{overflow:hidden}
+.palate-overlay{position:fixed;inset:0;z-index:500;display:none;
+  background:rgba(12,10,9,.82);backdrop-filter:blur(10px);
+  padding:40px 20px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.palate-overlay.open{display:flex;align-items:flex-start;justify-content:center;
+  animation:palFade .25s ease}
+@keyframes palFade{from{opacity:0}to{opacity:1}}
+.palate-card{position:relative;background:var(--espresso-mid);border:1px solid var(--whisper-strong);
+  border-radius:10px;box-shadow:0 40px 90px rgba(0,0,0,.6);width:100%;margin:auto;
+  padding:46px 44px;animation:palRise .35s ease-out}
+@keyframes palRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.palate-card-sm{max-width:480px}
+.palate-card-lg{max-width:860px}
+.seb-panel-card{max-width:560px}
+.palate-x{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--smoke);
+  font-size:28px;line-height:1;cursor:pointer;transition:color .2s ease;padding:4px}
+.palate-x:hover{color:var(--gold)}
+.palate-eyebrow{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.palate-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(28px,3.4vw,40px);
+  line-height:1.08;color:var(--alabaster);margin-bottom:14px}
+.palate-lede{font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.55;
+  color:var(--alabaster-dim);margin-bottom:26px;max-width:560px}
+.palate-label{display:block;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--alabaster-dim);margin:16px 0 6px}
+.palate-input{width:100%;background:var(--espresso-lift);border:1px solid var(--whisper-strong);
+  border-radius:6px;color:var(--alabaster);font-family:'DM Sans',sans-serif;font-size:15px;
+  padding:13px 14px;transition:border-color .2s ease,box-shadow .2s ease}
+.palate-input::placeholder{color:var(--smoke)}
+.palate-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow)}
+.palate-textarea{min-height:84px;resize:vertical;line-height:1.5}
+.palate-err{color:var(--gold-light);font-family:'DM Sans',sans-serif;font-size:13px;margin:12px 0 0}
+.palate-btn-primary{width:100%;margin-top:24px;background:var(--pimiento);color:#fff;border:none;
+  border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;padding:16px;cursor:pointer;transition:background .2s ease,box-shadow .2s ease}
+.palate-btn-primary:hover{background:var(--pimiento-deep);box-shadow:0 12px 34px var(--pimiento-glow)}
+.palate-btn-ghost{width:100%;margin-top:14px;background:none;color:var(--alabaster);
+  border:1px solid var(--whisper-strong);border-radius:6px;font-family:'DM Sans',sans-serif;
+  font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:13px;cursor:pointer;
+  transition:border-color .2s ease,color .2s ease}
+.palate-btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.palate-fineprint{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--smoke);margin-top:18px;text-align:center}
+/* Profile */
+.palate-head{margin-bottom:8px}
+.palate-learned-wrap{background:linear-gradient(180deg,var(--espresso-lift),var(--espresso-mid));
+  border:1px solid var(--whisper);border-left:3px solid var(--gold);border-radius:8px;
+  padding:20px 22px;margin:8px 0 30px}
+.palate-section-kicker{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.palate-learned{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;line-height:1.5;color:var(--alabaster)}
+.palate-section{padding:22px 0;border-top:1px solid var(--whisper)}
+.palate-h3{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:var(--alabaster);margin-bottom:16px}
+.palate-chips{display:flex;flex-wrap:wrap;gap:10px}
+.palate-chip{background:var(--espresso-lift);border:1px solid var(--whisper-strong);border-radius:30px;
+  color:var(--alabaster-dim);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;
+  padding:9px 18px;cursor:pointer;transition:all .18s ease}
+.palate-chip:hover{border-color:var(--gold);color:var(--alabaster)}
+.palate-chip.on{background:rgba(220,38,38,.16);border-color:var(--pimiento);color:var(--alabaster)}
+.palate-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.palate-field{display:flex;flex-direction:column}
+.palate-field>span{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--alabaster-dim);margin-bottom:6px}
+.palate-checks{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px}
+.palate-check{display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--alabaster-dim);cursor:pointer}
+.palate-check input{accent-color:var(--pimiento);width:16px;height:16px}
+.palate-empty{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--smoke)}
+.palate-saved-item{display:flex;align-items:center;gap:12px;background:var(--espresso-lift);
+  border:1px solid var(--whisper);border-radius:6px;padding:12px 14px;margin-bottom:8px}
+.psi-kind{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold);background:var(--gold-glow);border-radius:4px;padding:3px 8px}
+.psi-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--alabaster)}
+/* Sebastian panel */
+.seb-log{background:var(--espresso-lift);border:1px solid var(--whisper);border-radius:8px;
+  min-height:180px;max-height:46vh;overflow-y:auto;padding:18px;margin:8px 0 16px;display:flex;flex-direction:column;gap:12px}
+.seb-line{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.5;padding:12px 16px;border-radius:10px;max-width:88%}
+.seb-seb{background:var(--espresso-mid);border:1px solid var(--whisper);color:var(--alabaster);align-self:flex-start;border-bottom-left-radius:2px}
+.seb-you{background:rgba(220,38,38,.14);border:1px solid rgba(220,38,38,.3);color:var(--alabaster);align-self:flex-end;border-bottom-right-radius:2px;font-style:normal;font-family:'DM Sans',sans-serif;font-size:15px}
+.seb-ask-row{display:flex;gap:10px}
+.seb-ask-row .palate-input{flex:1}
+.seb-send{width:auto;margin-top:0;padding:0 22px;white-space:nowrap}
+/* Sebastian section ghost CTA */
+.seb-cta-ghost{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--gold);background:none;border:none;cursor:pointer;
+  padding:16px 12px;transition:color .2s ease}
+.seb-cta-ghost:hover{color:var(--gold-light);text-decoration:underline;text-underline-offset:4px}
+/* Toast */
+.palate-toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);
+  background:var(--espresso-lift);border:1px solid var(--gold);color:var(--alabaster);
+  font-family:'DM Sans',sans-serif;font-size:14px;padding:14px 22px;border-radius:8px;
+  box-shadow:0 16px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;z-index:600}
+.palate-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* nav My Palate link inherits .nav-links a styling already */
+@media(max-width:680px){
+  .palate-card{padding:38px 22px}
+  .palate-grid2{grid-template-columns:1fr}
+  .palate-overlay{padding:20px 12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .palate-overlay.open,.palate-card{animation:none}
+}
