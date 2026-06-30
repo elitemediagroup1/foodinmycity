@@ -462,8 +462,7 @@
     });
 
     // signup
-    var createBtn = $("#palateCreateBtn");
-    if (createBtn) createBtn.addEventListener("click", handleCreatePalate);
+    // The Create button is type=submit; the form submit handler below covers the click (avoids double-fire).
     var signupForm = $("#palateSignupForm");
     if (signupForm) signupForm.addEventListener("submit", function (e) { e.preventDefault(); handleCreatePalate(); });
 
