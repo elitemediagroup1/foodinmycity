@@ -82,3 +82,34 @@ Example submission payload:
 | Google Places    | Placeholder             | Serverless proxy env          |
 | Anthropic        | Placeholder             | Serverless proxy env          |
 | EMG Loop webhook | Placeholder             | Backend / signed endpoint     |
+
+
+## My Palate, The Loop & Neon (added in Sebastian Foundation sprint)
+
+**The Loop** is the backend intelligence system; it stores data in **Neon**. The frontend never connects to Neon directly and holds no credentials.
+
+### Frontend contract (`assets/js/palate.js`)
+
+- `createLoopUserProfile(profile)` — placeholder; production POSTs to `FIMC_CONFIG.loopProfileEndpoint`. Backend writes the profile to Neon.
+- `updateLoopUserProfile(profilePatch)` — placeholder; production PATCHes the same endpoint.
+- `Palate.loopEvent(type, data)` -> `sendLoopEvent(type, payload)` — structured events; production POSTs to `FIMC_CONFIG.loopWebhookEndpoint`.
+- `askSebastian(prompt, context)` — Anthropic placeholder; production POSTs { prompt, My Palate context, local food dataset } to `FIMC_CONFIG.anthropicProxyEndpoint` (a serverless proxy). The Anthropic key stays server-side only.
+- `fetchNearbyRestaurants(query, location)` — Google Places placeholder; real requests must go through a backend/serverless function.
+- `openGoogleMapsSearch(place, area)` — opens a Maps search URL (acceptable temporary frontend fallback).
+
+### Config keys (`FIMC_CONFIG`)
+
+```
+market, ga4MeasurementId, googleMapsApiKey (""), googlePlacesApiKey (""),
+anthropicProxyEndpoint (""), loopWebhookEndpoint (""), loopProfileEndpoint (""),
+loopNeonStorage ("backend-only"), indexNowKey, indexNowKeyLocation, environment
+```
+
+### Security rules
+
+- **No Neon credentials in frontend.** Neon is written by the backend only (`loopNeonStorage: "backend-only"`).
+- **No Anthropic key in frontend.** Use the serverless proxy.
+- **No Google Places key in production frontend.** Use a backend function; Maps search URL is the only frontend fallback.
+- Email is hashed server-side; the frontend `emailHash` is a non-cryptographic placeholder.
+
+See `MY_PALATE.md` and `PRODUCT_FLOW.md` for the full data model and event list.
