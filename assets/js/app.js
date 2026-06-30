@@ -18,6 +18,9 @@ const FIMC_CONFIG = {
   googlePlacesApiKey: "",                       // DO NOT put a real key here. Use a backend proxy.
   anthropicProxyEndpoint: "",                   // URL of your serverless proxy (no Anthropic key in frontend)
   loopWebhookEndpoint: "",                       // EMG Loop webhook capture endpoint (set in production)
+  googleMapsApiKey: "",                            // backend/serverless only — never expose a real key in frontend
+  loopProfileEndpoint: "",                         // EMG Loop profile create/update endpoint (backend writes to Neon)
+  loopNeonStorage: "backend-only",                 // Neon is written by the backend ONLY; no Neon creds in frontend
   indexNowKey: "b9f140612ecf495f85fc08b1452af5f0",
   indexNowKeyLocation: "https://foodinmycity.com/b9f140612ecf495f85fc08b1452af5f0.txt",
   environment: "development"
@@ -231,18 +234,6 @@ document.addEventListener("DOMContentLoaded", function () {
         case "find-dinner-nav":
           getTonightRecommendation(collectNightContext());
           scrollToDecision();
-          break;
-        case "take-me-there":
-          openDirections(this.dataset.restaurant || "");
-          break;
-        case "build-food-dna":
-          getFoodDnaProfile();
-          break;
-        case "talk-to-sebastian":
-          openSebastian("welcome");
-          break;
-        case "surprise-me":
-          surpriseSebastian();
           break;
         default:
           break;
